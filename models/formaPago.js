@@ -18,4 +18,4 @@ const formaPagoScheema  = new mongoose.Schema(
     { timestamps: true }
 );
 
-module.exports =mngoose.model("formPago", formaPagoScheema);
+module.exports =mngoose.model("formaPago", formaPagoScheema);
