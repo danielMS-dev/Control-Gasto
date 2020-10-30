@@ -8,9 +8,14 @@ const transaccionScheema = new mongoose.Schema(
             ref: "proyecto",
             required: true
         },
-        itemPartidaId: {
+        partidaId: {
             type: ObjectId,
-            ref: "itemPartida",
+            ref: "partida",
+            required: true
+        },
+        proveedorId: {
+            type: ObjectId,
+            ref: "sucursal",
             required: true
         },
         formaPagoId: {
