@@ -30,6 +30,10 @@ const usuarioScheema = new mongoose.Schema(
             trim: true,
             required: true
         },
+        usuarioFoto: {
+            data: Buffer,
+            contentType: String
+        },
         hashed_password: {
             type: String,
             required: true
