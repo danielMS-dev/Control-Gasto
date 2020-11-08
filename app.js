@@ -6,10 +6,15 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const expressValidator = require("express-validator");
 require("dotenv").config();
-
+ 
 
 const app = express();
-//**  Manager concection Data Base
+
+//import Routes
+const authRoutes = require("./routes/auth");
+const usuarioRoutes = require("./routes/usuario")
+
+//**  Manager concection DataBase
 // modern connection
 const db = async () => {
     try {
@@ -28,8 +33,18 @@ const db = async () => {
 db();
 
 //** End Manager Connection Data Base */
+// middlewares
+app.use(morgan("dev"));
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(expressValidator());
+app.use(cors());                // Habilita la conexión de equipos remotoss
 
 
+ 
+/* routes middlewares */
+app.use("/api", authRoutes);
+app.use("/api", usuarioRoutes);
 
 
 // port

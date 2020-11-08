@@ -16,12 +16,11 @@ const usuarioScheema = new mongoose.Schema(
         },
         materno: {
             type: String,
-            required: true,
             trim: true
         },
         rol: {
             type: String,
-            default: "user",
+            default: "Usuario",
             enum: ["Administrador", "Usuario"]
         },
         email: {
@@ -39,8 +38,10 @@ const usuarioScheema = new mongoose.Schema(
             required: true
         },
         salt: {
-            String
+           type: String
         }
+    },{
+        timestamps: true
     }
 );
 // virtual field
