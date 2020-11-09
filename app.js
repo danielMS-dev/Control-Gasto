@@ -13,6 +13,7 @@ const app = express();
 //import Routes
 const authRoutes = require("./routes/auth");
 const usuarioRoutes = require("./routes/usuario")
+const formaPagoRoutes = require("./routes/formaPago")
 
 //**  Manager concection DataBase
 // modern connection
@@ -45,6 +46,7 @@ app.use(cors());                // Habilita la conexión de equipos remotoss
 /* routes middlewares */
 app.use("/api", authRoutes);
 app.use("/api", usuarioRoutes);
+app.use("/api", formaPagoRoutes);
 
 
 // port

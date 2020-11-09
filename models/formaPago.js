@@ -13,9 +13,14 @@ const formaPagoScheema  = new mongoose.Schema(
             type: String,
             trim: true,
             maxlength: 500
+        },
+        estado: {
+            type: String,
+            default: "Activa",
+            enum: ["Activa", "Inactiva", "Eliminada"]
         }
     },
     { timestamps: true }
 );
 
-module.exports =mngoose.model("formaPago", formaPagoScheema);
+module.exports =mongoose.model("formaPago", formaPagoScheema)
