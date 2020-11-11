@@ -9,7 +9,7 @@ const proyectoScheema = new mongoose.Schema(
             required: true,
             trim: true
         },
-        descipcion: {
+        descripcion: {
             type: String,
             maxlength: 500,
             trim: true
@@ -19,7 +19,7 @@ const proyectoScheema = new mongoose.Schema(
             maxlength: 50,
             trim: true
         },
-        descipcion: {
+        descripcionContacto: {
             type: String,
             trim: true,
             maxlength: 500,
@@ -27,6 +27,11 @@ const proyectoScheema = new mongoose.Schema(
         presupuesto: {
             type: Number,
             default: 0
+        },
+        estado: {
+            type: String,
+            default: "Activa",
+            enum: ["Activa", "Inactiva", "Eliminada"]
         }
     },
     {

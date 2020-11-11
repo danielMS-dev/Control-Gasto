@@ -4,7 +4,7 @@ const { errorHandler } = require("../helpers/dbErrorHandler");
 const { body } = require("express-validator/check");
 
 exports.read = (req, res) => {
-    console.log(req)
+    
     return res.json(req.fp);
 }
 exports.formaPagoById = (req, res, next, id) => {
@@ -16,11 +16,11 @@ exports.formaPagoById = (req, res, next, id) => {
             });
         }
         req.fp = datos;
-        next();
+        next()
     })
 }
 exports.create = (req, res) => {
-    console.log(req.body)
+        
     const fp = new Fp(req.body)
 
     fp.save((error, datos) => {
@@ -53,19 +53,18 @@ Fp.find()
 };
 
 exports.remove = (req, res) => {
+    req.body.estado = "Eliminada";
     Fp.findOneAndUpdate(
         { _id: req.profile._id },
         { $set: req.body },
         { new: true },
-        (err, user) => {
-            if (err) {
+        (error, datos) => {
+            if (error) {
                 return res.status(400).json({
-                    error: "You are not authorized to perform this action"
+                    error: error
                 });
             }
-            user.hashed_password = undefined;
-            user.salt = undefined;
-            res.json(user);
+            res.json(datos);
         }
     );
 }
@@ -81,7 +80,6 @@ exports.update = (req, res) => {
                     error: error
                 });
             }
-           
             res.json(datos);
         }
     );
