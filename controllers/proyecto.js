@@ -51,7 +51,7 @@ exports.remove = (res, req) => {
     Proyecto.findOneAndUpdate(
         {_id :req._id},
         {$set: req.body},
-        { new: true},
+        { new: true}, // si es verdadero, devuelve el documento modificado en lugar del original. por defecto es falso
         (error, datos) => {
             if(error){
                 res.status(400).body({
