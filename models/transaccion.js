@@ -49,7 +49,17 @@ const transaccionScheema = new mongoose.Schema(
             type: String,
             trim: true,
             maxlength: 500
+        },
+         estado: {
+            type: String,
+            default: "Activa",
+            enum:["Activa, Anulada"]
+        },
+        ObservacionAnulacion: {
+            type: String,
+            maxlength: 500,
         }
+
     },
     {
         timestamps: true
