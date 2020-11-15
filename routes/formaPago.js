@@ -18,12 +18,12 @@ const {
 const { userById } = require("../controllers/usuario")
 
 
-router.get("/formaPago/:userId", requireSignin, isAuth, list)
+router.get("/formaPago/list/:userId", requireSignin, isAuth, list)
 router.get("/formaPago/:formaPagoId/:userId", requireSignin, isAuth, read)
 
-router.post("/formaPago/:userId", requireSignin, isAuth, create)
+router.post("/formaPago/create/:userId", requireSignin, isAuth, create)
 
-router.put("/formaPago/:formaPagoId/:userId",requireSignin, isAuth, update)
+router.post("/formaPago/:formaPagoId/:userId",requireSignin, isAuth, update)
 
 router.delete("/formaPago/:formaPagoId/:userId",requireSignin, isAuth, remove)
 
