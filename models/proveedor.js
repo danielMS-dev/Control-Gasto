@@ -24,4 +24,4 @@ const proveedorScheema = new mongoose.Schema(
     }
 );
 
-module.exports = mongoose.mongoose.module("proveedor", proveedorScheema);
+module.exports = mongoose.model("proveedor", proveedorScheema) 

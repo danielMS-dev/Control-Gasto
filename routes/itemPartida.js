@@ -1,5 +1,4 @@
 const express = require("express")
-const { create } = require("../models/usuario")
 const router = express.Router()
 
 
@@ -11,6 +10,8 @@ const {
     list,
     itemPartidaById
 } = require("../controllers/itemPartida")
+
+
 const { requireSignin, isAuth }  = require("../controllers/auth")
 const { userById } = require("../controllers/usuario")
 

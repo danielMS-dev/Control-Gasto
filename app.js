@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const expressValidator = require("express-validator");
 require("dotenv").config();
- 
+  
 
 const app = express();
 
@@ -15,6 +15,8 @@ const authRoutes = require("./routes/auth");
 const usuarioRoutes = require("./routes/usuario")
 const formaPagoRoutes = require("./routes/formaPago")
 const proyectoRoutes = require("./routes/proyecto")
+const proveedorRoutes = require("./routes/proveedor")
+const trxRoutes = require("./routes/transaccion")
 
 //**  Manager concection DataBase
 // modern connection
@@ -49,6 +51,8 @@ app.use("/api", authRoutes);
 app.use("/api", usuarioRoutes);
 app.use("/api", formaPagoRoutes);
 app.use("/api", proyectoRoutes);
+app.use("/api", proveedorRoutes);
+app.use("/api", trxRoutes);
 
 
 // port
@@ -58,4 +62,4 @@ const port = process.env.PORT || 8000;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
- 
+  

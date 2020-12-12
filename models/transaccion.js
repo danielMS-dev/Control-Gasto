@@ -15,7 +15,7 @@ const transaccionScheema = new mongoose.Schema(
         },
         proveedorId: {
             type: ObjectId,
-            ref: "sucursal",
+            ref: "proveedor",
             required: true
         },
         formaPagoId: {
@@ -23,7 +23,7 @@ const transaccionScheema = new mongoose.Schema(
             ref: "itemPartida",
             required: true
         },
-        usuarioId: {
+        usuarioId: { 
             type: ObjectId,
             ref: "usuario",
             required: true
