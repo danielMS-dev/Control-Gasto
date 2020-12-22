@@ -4,8 +4,9 @@ const { errorHandler } = require("../helpers/dbErrorHandler");
 // middlewares rest 
 
 exports.userById = (req, res, next, id) => {
-    User.findById(id).exec((err, user) => {
-        if (err || !user) {
+    console.log("userById: " + id)
+    User.findById(id).exec((error, user) => {
+        if (error || !user) {
             return res.status(400).json({
                 error: "User not found"
             });
@@ -26,8 +27,8 @@ exports.update = (req, res) => {
         { _id: req.profile._id },
         { $set: req.body },
         { new: true },
-        (err, user) => {
-            if (err) {
+        (error, user) => {
+            if (error) {
                 return res.status(400).json({
                     error: "You are not authorized to perform this action"
                 });
@@ -47,16 +48,17 @@ exports.list = (req, res) => {
         .select("-salt -hashed_password")
         .sort([[sortBy, order]])
         .limit(limit)
-        .exec((err, datos) => {
-            if (err) {
+        .exec((error, datos) => {
+            if (error) {
                 return res.status(400).json({
                     error: "Usuarios no encontrados"
                 });
             }
             console.log(datos)
-           datos.salt = undefined;
+            datos.salt = undefined;
             datos.hashed_password = undefined;
             console.log(datos.profile)
             res.json(datos);
         });
 };
+ 

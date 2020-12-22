@@ -1,5 +1,4 @@
 const Proveedor = require("../models/proveedor")
-const express = require("express")
 const { errorHandler } = require("../helpers/dbErrorHandler")
 
 

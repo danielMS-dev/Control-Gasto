@@ -23,7 +23,7 @@ router.get("/formaPago/:formaPagoId/:userId", requireSignin, isAuth, read)
 
 router.post("/formaPago/create/:userId", requireSignin, isAuth, create)
 
-router.post("/formaPago/:formaPagoId/:userId",requireSignin, isAuth, update)
+router.put("/formaPago/:formaPagoId/:userId",requireSignin, isAuth, update)
 
 router.delete("/formaPago/:formaPagoId/:userId",requireSignin, isAuth, remove)
 

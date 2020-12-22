@@ -7,15 +7,20 @@ exports.read = (req, res) => {
 }
 
 exports.proyectoById = (req, res, next, id) => {
-    Proyecto.find(id).exec((error, datos) => {
-        if (error || !datos) {
-            return res.status(400).json({
-                error: errorHandler(error)
-            })
-        }
-        req.Proyecto = datos
-        next()
-    })
+    console.log("proyectoById: " + id)
+    Proyecto.findById(id)
+        .exec((err, datos) => {
+            if (err || !datos) {
+                return res.status(400).json({
+                    error: "Proyecto no encontrado..."
+                })
+            }
+            console.log("exec: " + datos)
+            req.proyecto = datos
+            console.log("req.proyecto: " + req.proyecto)
+            next()
+        })
+
 }
 
 exports.create = (req, res) => {
@@ -30,18 +35,20 @@ exports.create = (req, res) => {
     })
 }
 
-exports.update = (res, req) => {
+exports.update = (req, res) => {
+    console.log("update: " + req.body)
     Proyecto.findOneAndUpdate(
-        { _id: req._id },
+        { _id: req.proyecto._id },
         { $set: req.body },
         { new: true },
-        (error, datos) => {
-            if (error) {
+        (err, datos) => {
+            if (err) {
                 res.status(400).body({
-                    error: errorHandler(error)
+                    error: errorHandler(err)
                 })
             }
-            res.json({ datos })
+            console.log(datos)
+            res.json(datos)
         }
     )
 }
@@ -62,7 +69,7 @@ exports.remove = (res, req) => {
         }
     )
 }
-
+ 
 exports.list = (req, res) => {
     let order = req.query.order ? req.query.order : "asc";
     let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
@@ -72,7 +79,7 @@ exports.list = (req, res) => {
         .sort([[sortBy, order]])
         .limit(limit)
         .exec((error, datos) => {
-            if (err) {
+            if (error) {
                 return res.status(400).json({
                     error: errorHandler(error)
                 });

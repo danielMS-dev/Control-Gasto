@@ -24,9 +24,9 @@ router.get("/proyecto/:idUser", requireSignin, isAuth, list)
 
 router.post("/proyecto/create/:idUser", requireSignin, isAuth, create)
 
-router.put("/proyecto/:idUser", requireSignin, isAuth, update)
+router.put("/proyecto/:idProyecto/:idUser", requireSignin, isAuth, update)
 
-router.delete("/proyecto/:idUser", requireSignin, isAuth, remove)
+router.delete("/proyecto/:idProyecto/:idUser", requireSignin, isAuth, remove)
 
 //PARAM
 router.param("idProyecto", proyectoById)

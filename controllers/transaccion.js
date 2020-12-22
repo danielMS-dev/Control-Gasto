@@ -10,8 +10,8 @@ exports.trxById = (req, res, next, id) => {
     Transaccion.findById(id)
         .exec((error, datos) => {
             if (error || !datos) {
-                return res.status().json({
-                    error: "Item de partida, no encontrado"
+                return res.status(400).json({
+                    error: "Transacción no encontrada"
                 })
             }
             req.Transaccion = datos

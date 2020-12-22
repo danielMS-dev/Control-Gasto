@@ -9,15 +9,15 @@ exports.read = (req, res) => {
 }
 exports.formaPagoById = (req, res, next, id) => {
     Fp.findById(id)
-    .exec((error, datos) => {
-        if (error || !datos) {
-            return res.status(400).json({
-                error: "Forma de pago no encontrada"
-            });
-        }
-        req.fp = datos;
-        next()
-    })
+        .exec((error, datos) => {
+            if (error || !datos) {
+                return res.status(400).json({
+                    error: "Forma de pago no encontrada"
+                });
+            }
+            req.fp = datos; 
+            next()
+        })
 }
 exports.create = (req, res) => {
         
