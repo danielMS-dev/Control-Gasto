@@ -5,10 +5,39 @@ const {
     signup,
     signin,
     signout
-} = require("../controllers/auth");
-const { userSignupValidator } = require("../validator");
+} = require("../controllers/auth")
 
-// routes
+const { userSignupValidator } = require("../validator")
+
+/**
+ * @swagger
+ * /api/signup:
+ *  post:
+ *    summary: signup user
+ *    description: Use to add new user
+ *    requestBody: 
+ *      content:
+ *        application/json:
+ *          schema:
+ *            properties:
+ *              nombres:
+ *                  type: string
+ *                  description: nombres user require
+ *              paterno:
+ *                  type: string
+ *                  description: paterno user require
+ *              email:
+ *                  type: string
+ *                  description: email user valid
+ *              password:
+ *                  type: string
+ *                  description: password user require
+ *    responses:
+ *      "200":
+ *        description: A successful response
+ *      "400":
+ *        description: A bad request response
+ */
 router.post("/signup",userSignupValidator, signup);
 
 /**
