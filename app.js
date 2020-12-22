@@ -1,14 +1,16 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const morgan = require("morgan");
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
-const cors = require("cors");
-const expressValidator = require("express-validator");
-require("dotenv").config();
-  
+const express = require("express")
+const mongoose = require("mongoose")
+const morgan = require("morgan")
+const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
+const cors = require("cors")
+const expressValidator = require("express-validator")
+require("dotenv").config()
 
-const app = express();
+const swaggerJsDoc = require("swagger-jsdoc")
+const swaggerUi = require("swagger-ui-express")
+
+const app = express()
 
 //import Routes
 const authRoutes = require("./routes/auth");
@@ -44,6 +46,27 @@ app.use(cookieParser());
 app.use(expressValidator());
 app.use(cors());  // Habilita la conexión de equipos remotos
 
+
+const swaggerOptions = {
+    swaggerDefinition: {
+        openapi: '3.0.0',
+        info: {
+            version: "1.0.0",
+            title: "Control de Gastos",
+            description: "Control de Gastos API Information",
+            contact: {
+                name: "daniel_dev"
+            },
+            servers: ["http://localhost:8001"]
+        }
+    },
+    // definition the apis with swagger 
+    apis: ['./routes/*.js']
+};
+
+// final definitions with swagger-express
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
  
 /* routes middlewares */
