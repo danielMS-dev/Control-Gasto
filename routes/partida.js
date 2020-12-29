@@ -18,10 +18,12 @@ const { userById } = require("../controllers/usuario")
 
 
 
-router.post("/partida/create/:userId", requireSignin, isAuth, create)
-router.get("/partida/list/:userId", requireSignin, isAuth, list)
-router.get("/partida/:partidaId/:userId", requireSignin. isAuth, read)
 
+router.get("/partida/list", requireSignin, list)
+router.get("/partida/:partidaId", requireSignin, read)
+
+
+router.post("/partida/create/:userId", requireSignin, isAuth, create)
 router.put("/partida/:userId", requireSignin, isAuth, update)
 router.delete("partida/:userid", requireSignin, isAuth, remove)
 

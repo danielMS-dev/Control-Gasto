@@ -19,6 +19,8 @@ const formaPagoRoutes = require("./routes/formaPago")
 const proyectoRoutes = require("./routes/proyecto")
 const proveedorRoutes = require("./routes/proveedor")
 const trxRoutes = require("./routes/transaccion")
+const partidaRoutes = require("./routes/partida")
+const itemPartidaRoutes = require("./routes/itemPartida")
 
 //**  Manager concection DataBase
 // modern connection
@@ -76,7 +78,9 @@ app.use("/api", formaPagoRoutes);
 app.use("/api", proyectoRoutes);
 app.use("/api", proveedorRoutes);
 app.use("/api", trxRoutes);
-
+app.use("/api", partidaRoutes);
+app.use("/api", itemPartidaRoutes); 
+ 
 
 // port
 const port = process.env.PORT || 8000;

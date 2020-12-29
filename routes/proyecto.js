@@ -19,8 +19,8 @@ const {
 const { userById } = require("../controllers/usuario")
 
 
-router.get("/proyecto/:idProyecto/:idUser", requireSignin, isAuth, read)
-router.get("/proyecto/:idUser", requireSignin, isAuth, list)
+router.get("/proyecto/:idProyecto", requireSignin, read)
+router.get("/proyecto", requireSignin, list)
 
 router.post("/proyecto/create/:idUser", requireSignin, isAuth, create)
 

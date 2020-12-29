@@ -55,7 +55,7 @@ const transaccionScheema = new mongoose.Schema(
             default: "Activa",
             enum:["Activa, Anulada"]
         },
-        ObservacionAnulacion: {
+        observacionAnulacion: {
             type: String,
             maxlength: 500,
         }

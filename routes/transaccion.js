@@ -20,9 +20,9 @@ const {
 
 
 
-router.get("/trx/:userId", requireSignin, isAuth, list)
-router.get("/trx/:trxId/:userId", requireSignin, isAuth, read)
-router.get("/trx/:userId", requireSignin, isAuth, list)
+
+router.get("/trx/:trxId", requireSignin, read)
+router.get("/trxs", requireSignin, list)
 
 router.post("/trx/create/:userId", requireSignin, isAuth, create)
 router.delete("/trx/:userId", requireSignin, isAuth, remove)

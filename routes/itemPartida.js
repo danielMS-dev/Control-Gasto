@@ -17,10 +17,11 @@ const { userById } = require("../controllers/usuario")
 
 
 // GET
-router.get("/itemPartida/:userId",requireSignin, isAuth , list)
-router.get("/itemPartida/:userId/:itemPartidaId",requireSignin, isAuth , read)
+router.get("/itemPartidas",requireSignin, list)
 
-router.post("/itemPartida/create/:userId", requireSignin. isAuth, create)
+router.get("/itemPartida/:itemPartidaId",requireSignin, read)
+
+router.post("/itemPartida/create/:userId", requireSignin, isAuth, create)
 
 router.put("/ItemPartida/:userId",requireSignin, isAuth, update)
 

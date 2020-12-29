@@ -17,9 +17,29 @@ const {
 
 const { userById } = require("../controllers/usuario")
 
+/**
+ * @swagger   
+ * /api/formaPago/list/{userId}: 
+ *  get:
+ *    summary: Lista forma pago
+ *    description: Obtiene una lista de las formas de pago
+ *    parameters:
+ *     -  name: "userId" 
+ *        in: "path"
+ *        description: "ID de la persona con permiso para ver las formas de pago"
+ *        required: true
+ *        type: "ObjectId"
+ *    responses:
+ *      "200":
+ *         description: A successful response
+ *      "400":
+ *         description: A bad request response
+ *    security:
+ *     - api_key: []
+ */
+router.get("/formaPago/list", requireSignin, list)
 
-router.get("/formaPago/list/:userId", requireSignin, isAuth, list)
-router.get("/formaPago/:formaPagoId/:userId", requireSignin, isAuth, read)
+router.get("/formaPago/:formaPagoId", requireSignin, read)
 
 router.post("/formaPago/create/:userId", requireSignin, isAuth, create)
 

@@ -1,5 +1,4 @@
 const Partida = require("../models/partida")
-const express = require("express")
 const { errorHandler } = require("../helpers/dbErrorHandler")
 
 
@@ -20,6 +19,7 @@ exports.partidaById = (req, res, next, id) => {
 }
 
 exports.create = (req, res) => {
+    console.log(req.body)
     const partida = new Partida(req.body)
     partida.save((error, data) => {
         if (error) {

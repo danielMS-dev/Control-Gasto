@@ -12,7 +12,7 @@ const { userSignupValidator } = require("../validator")
 /**
  * @swagger
  * /api/signup:
- *  post:
+ *  get:
  *    summary: signup user
  *    description: Use to add new user
  *    requestBody: 

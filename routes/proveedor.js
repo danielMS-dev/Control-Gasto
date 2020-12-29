@@ -21,9 +21,8 @@ const {
 
 
 
-router.get("/proveedor/:userId", requireSignin, isAuth, list)
-router.get("/proveedor/:proveedorId/:userId", requireSignin, isAuth, read)
-router.get("/proveedores/:userId", requireSignin, isAuth, list)
+router.get("/proveedor/:proveedorId", requireSignin, read)
+router.get("/proveedores", requireSignin, list)
 
 router.post("/proveedor/create/:userId", requireSignin, isAuth, create)
 router.delete("/proveedor/:userId", requireSignin, isAuth, remove)
